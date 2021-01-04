@@ -1,0 +1,87 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Zil Özelleştirme
+{% endblock %}
+
+
+{% block top %}
+{% if request.resolver_match.url_name == 'zillistviewaksam' %}
+   <h4>Akşam Okulu Zil Detayları</h4>
+{% endif %}
+{% if request.resolver_match.url_name == 'zillistview' %}
+    <h4>Örğün Eğitim Zil Detayları</h4>
+{% endif %}
+{% endblock%}
+
+
+{% block content %}
+<div class="table-container">
+    <table class="table">
+                <thead >
+                    <tr>
+                        <th class="orderable">
+                                <a href="?sort=dersbaslangicsaati">Derslerin Başlangıç Saati</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=toplanmasuresi">Toplanma Süresi</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=ogretmenzilsuresi">Öğretmen Ders Bildirim Zili</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=derssayisi">Günlük Ders Sayısı</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=derssuresi">Ders Süresi</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=tenefussuresi">Tenefüs Süresi</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=oglenarasiders">Öğlen Arası</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=oglenarasisuresi">Öğlen Arası Süresi</a>
+                        </th>
+                        <th class="asc orderable">
+                                <a href="?sort=-zilgun">Tanımlanan Günü</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=active">Aktif Pasif</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=active">İşlemler</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody >
+                     {% for  def in ziltanimi %}
+                    <tr class="odd">
+                            <td >{{def.dersbaslangicsaati}}</td>
+                            <td >{{def.toplanmasuresi}}</td>
+                            <td >{{def.ogretmenzilsuresi}}</td>
+                            <td >{{def.derssayisi}}</td>
+                            <td >{{def.derssuresi}}</td>
+                            <td >{{def.tenefussuresi}}</td>
+                            <td >{{def.oglenarasiders}}</td>
+                            <td >{{def.oglenarasisuresi}}</td>
+                            <td >{{def.get_zilgun_display}}</td>
+                            <td ><span class="{{def.active}}">{% if def.active %}✔{% else %}X{% endif %}</span></td>
+                        <td >
+                            <a class="btn btn-info btn-sm" href="{% url 'guncelle' def.id %}">Düzenle</a>
+                        </td>
+                        <td >
+                            <a class="btn btn-info btn-sm" href="{% url 'sil' def.id %}">Sil</a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
