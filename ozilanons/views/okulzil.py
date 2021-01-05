@@ -21,7 +21,7 @@ zilcal.zil_melodi(**xmelodi)
 
 
 @background(schedule=5)
-def feed_database(aktif, guncel):
+def feed_gunzil(aktif, guncel):
     zilcal.aktif_set(aktif)
     zilcal.guncel_set(guncel)
     zilcal.vericek()
@@ -71,7 +71,7 @@ def ZilListView(request):
         zilhesapla.kontrol.update({'guncel': False})
         zilcal.aktif_set(True)
         zilcal.guncel_set(True)
-        feed_database(zilcal.aktif_get(), zilcal.guncel_get())
+        feed_gunzil(zilcal.aktif_get(), zilcal.guncel_get())
     context = {'ziltanimi': ziltanimi}
     return render(request, 'ayarlar/new_ayarlar_detail.html', context)
 

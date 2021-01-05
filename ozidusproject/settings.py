@@ -72,7 +72,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ozidusproject.wsgi.application'
-
+# Chrome dışında browser da kaptılınca user oturumu kapatılır :True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
