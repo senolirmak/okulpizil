@@ -283,10 +283,6 @@ class OkulZiliCal:
         self.job_play(self.melodi.get('cikis', 'cik.mp3'))
 
     @staticmethod
-    def kapat():
-        sys.exit()
-
-    @staticmethod
     def Sonraki_Zil(time0):
         sa, dk = str(time0)[:5].split(':')
         t0 = timedelta(hours=int(sa), minutes=int(dk), seconds=0)
