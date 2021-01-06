@@ -2,10 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from uretim.models import AksamOkul
 from uretim.models import DersZamanlama, NormalOkul
 from ozilanons.models import DuyuruData
-
 from ozilanons.forms import ZilDataForm, AksamZilDataForm, DuyuruDataForm, ZilDurumForm
 from datetime import datetime
-
 from django.contrib import messages
 from django.contrib.auth import logout
 from uretim.ziluret.ziluret import OkulZiliCal, ZilUret
@@ -25,12 +23,18 @@ def feed_gunzil(aktif, guncel):
     zilcal.aktif_set(aktif)
     zilcal.guncel_set(guncel)
     zilcal.vericek()
-    print(zilcal.aktif_get())
-    print(zilcal.guncel_get())
     zilcal.GunlukZilleriKur()
 
 
 def index(request):
+    if ZilUret.kontrol.get('guncel', False):
+        ZilUret.uziller.clear()
+        zilhesapla.uret()
+        zilhesapla.ders_zil_kayit(DersZamanlama)
+        zilhesapla.kontrol.update({'guncel': False})
+        zilcal.aktif_set(True)
+        zilcal.guncel_set(True)
+        feed_gunzil(zilcal.aktif_get(), zilcal.guncel_get())
     return render(request, 'ayarlar/index.html')
 
 
@@ -58,20 +62,25 @@ def ZilKapat(request):
     return render(request, 'ayarlar/anonsduyuru.html', {'form': form})
 
 
+def FilteredZilListView(request, ders_gun):
+    gundeyat = DersZamanlama.objects.filter(ders_gun=ders_gun)
+    context = {'gundeyat': gundeyat}
+
+    return render(request, 'ayarlar/gun_ds_tablosu.html', context)
+
+
+"""def GunZilListView(request, zilgun):
+    gunzil = GunZilTable.ob
+    context = {'gunzil': gunzil}
+    return render(request, 'ayarlar/gun_ds_talosu.html', context)"""
+
+
 def ZilTanimMenu(request):
     return render(request, 'ayarlar/zilayarmenu.html')
 
 
 def ZilListView(request):
     ziltanimi = NormalOkul.objects.all()
-    if ZilUret.kontrol.get('guncel', False):
-        ZilUret.uziller.clear()
-        zilhesapla.uret()
-        zilhesapla.ders_zil_kayit(DersZamanlama)
-        zilhesapla.kontrol.update({'guncel': False})
-        zilcal.aktif_set(True)
-        zilcal.guncel_set(True)
-        feed_gunzil(zilcal.aktif_get(), zilcal.guncel_get())
     context = {'ziltanimi': ziltanimi}
     return render(request, 'ayarlar/new_ayarlar_detail.html', context)
 

@@ -1,5 +1,5 @@
 import django_tables2 as tables
-import django_tables2.utils as ztb
+
 from uretim.models import NormalOkul, AksamOkul
 
 
@@ -14,6 +14,18 @@ class ZilayarTable(tables.Table):
 
         exclude = ('published_date', 'id', )
         order_by = 'zilgun'
+
+
+"""class GunZilTable(tables.Table):
+
+    class Meta:
+        model = DersZamanlama
+        template_name = 'django_tables2/bootstrap.html'
+        sequence = ('ders_no',
+                    'toplanma_saati', 'ders_baslangic', 'ogretmen_saat', 'ders_bitis',)
+
+        exclude = ('published_date', 'id', )
+        order_by = 'zilgun'"""
 
 
 class AksamZilayarTable(tables.Table):

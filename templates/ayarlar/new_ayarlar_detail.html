@@ -12,8 +12,9 @@ Zil Özelleştirme
 {% if request.resolver_match.url_name == 'zillistview' %}
     <h4>Örğün Eğitim Zil Detayları</h4>
 {% endif %}
+ <a class="btn btn-info btn-sm" href="{% url 'index' %}">Tanımlı Zili Yükle</a>
 {% endblock%}
-
+<!--{% url 'index' def.id %}-->
 
 {% block content %}
 <div class="table-container">

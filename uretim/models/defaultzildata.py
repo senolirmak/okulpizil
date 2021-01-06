@@ -27,6 +27,7 @@ class ZilTanimi(models.Model):
 
 
 class NormalOkul(ZilTanimi):
+
     class Meta:
         db_table = 'zildefault'
         ordering = ['zilgun']

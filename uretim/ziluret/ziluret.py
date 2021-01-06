@@ -16,6 +16,8 @@ class ZilUret:
         self.ziltanim = _ZilData
         self.dveri = list()
         self.veri = dict()
+        self.guncel = False
+        self.okultip = None
 
     def tanimveri(self):
         self.dveri = self.ziltanim.objects.filter(active=True)
@@ -306,7 +308,7 @@ class OkulZiliCal:
                 toplan, ilk, ders, cik = self.derszili_get(gun, k)
                 if self.Sonraki_Zil(toplan):
                     schedule.every().day.at(toplan).do(self.job_toplanma)
-                    print("Toplan Zil, {}. Ders".format(k))
+                    print("{}. Ders Toplan Zil,".format(k))
                     break
 
                 if self.Sonraki_Zil(ilk) and (self.Sonraki_Zil(cik)):
@@ -316,7 +318,7 @@ class OkulZiliCal:
 
                 if self.Sonraki_Zil(ders) and not (self.Sonraki_Zil(ilk)):
                     schedule.every().day.at(ders).do(self.job_ders)
-                    print("Ders Zil, {}. Ders".format(k))
+                    print(" Ders Zil, {}. Ders".format(k))
                     break
 
                 if self.Sonraki_Zil(cik) and not (self.Sonraki_Zil(ders)):

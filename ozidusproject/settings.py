@@ -24,7 +24,7 @@ SECRET_KEY = 's=ffd89hup)hl6irmv2hy2&y_3u0r6m%f0+@jo8=50dz357x4i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.10', '192.168.0.27']
 
 # Application definition
 
@@ -148,4 +148,4 @@ STATICFILES_DIRS = [
 
 ]
 
-LOGIN_REDIRECT_URL = 'anonsduyuru'
+LOGIN_REDIRECT_URL = 'index'

@@ -5,12 +5,21 @@ Ana Sayfa
 {% endblock %}
 
 {% block top %}
+<h4>Aktif Zil Listesi</h4>
 {% endblock%}
 
 {% block content %}
+<a class="btn btn-info btn-sm" href="{% url 'gunzillist' 0 %}">Pazartesi</a>
+<a class="btn btn-info btn-sm" href="{% url 'gunzillist' 1 %}">Salı</a>
+<a class="btn btn-info btn-sm" href="{% url 'gunzillist' 2 %}">Çarşamba</a>
+<a class="btn btn-info btn-sm" href="{% url 'gunzillist' 3 %}">Perşembe</a>
+<a class="btn btn-info btn-sm" href="{% url 'gunzillist' 4 %}">Cuma</a>
+<a class="btn btn-info btn-sm" href="{% url 'gunzillist' 5 %}">Cumartesi</a>
+<a class="btn btn-info btn-sm" href="{% url 'gunzillist' 6 %}">Pazar</a>
 {% endblock %}
 
 {% block footer %}
+<br><br>
 {% if messages %}
     {% for message in messages %}
     <div class="alert alert-{{message.tags}}">{{ message}}</div>
