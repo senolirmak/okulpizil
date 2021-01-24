@@ -1,0 +1,50 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Giriş
+{% endblock %}
+
+{% block top %}
+
+<h1 style="text-align: center;">Okul Zil ve Duyuru Sistemi</h1>
+{% if form.errors %}
+<p style="text-align: center;">Kullanıcı adı veya parola yanlış. Lütfen tekrar deneyin.</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p style="text-align: center;">Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+{% else %}
+<p style="text-align: center;">Please login to see this page.</p>
+{% endif %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center vertical-center">
+    <div class="col-lg-3">
+        <div class="border border-info mt-3 rounded login_form">
+            <h4 style="text-align: center;">Kullanıcı Girişi</h4>
+            <form method="post" action="{% url 'login' %}">{% csrf_token %}
+
+                <div class="mb-3" >
+                    <input type="text" name="username" class="form-control" placeholder="Kullanıcı Adı" style="text-align: center;">
+                </div>
+
+                <div class="mb-3" >
+                    <input type="password" name="password" class="form-control" placeholder="Şifre" style="text-align: center;">
+                </div>
+
+                <div class="mb-3" style="text-align: center;">
+                    <input type="submit" name="login"  value="Giriş" class="btn btn-primary" >
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

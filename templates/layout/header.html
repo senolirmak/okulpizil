@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
+  <a class="navbar-brand" href="#">Okul Zil Duyuru Sistemi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% if request.resolver_match.url_name == 'zilayarmenu' and user.is_authenticated %}active{% endif %}disabled">
+        <a class="nav-link {% if user.is_authenticated %}active{% endif %}disabled" href="{% url 'zilayarmenu' %}">Zil Giriş <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item {% if request.resolver_match.url_name == 'anonsduyuru' and user.is_authenticated %}active{% endif %}disabled" >
+        <a class="nav-link {% if user.is_authenticated %}active{% endif %}disabled" href="{% url 'anonsduyuru' %}" tabindex="-1" aria-disabled="true">Duyuru<span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+    {% if user.is_authenticated %}
+    <a class="navbar-brand">Hoşgeldin, {{ user.get_full_name|default:user.username }}</a>
+    <a type="button" class="btn btn-primary btn-sm" href="{% url 'cikis' %}">Çıkış</a>
+    {% else %}
+    <p class="navbar-brand">Hoşgeldin,  Lütfen giriş yapın.</p>
+    {% endif %}
+  </div>
+</nav>

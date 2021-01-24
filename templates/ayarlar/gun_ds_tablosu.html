@@ -1,0 +1,65 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Bilgileri
+{% endblock %}
+
+{% block top %}
+<h6>Ayrıntlı Zil Bilgileri :
+
+{% for  def in gundeyat %}
+{% if forloop.first %}
+    {{def.get_ders_gun_display}} </h6>
+{% endif %}
+{% endfor %}
+<a class="btn btn-info btn-sm" href="{% url 'index' %}" > <<< Geri </a>
+{% endblock%}
+
+{% block content %}
+<div class="table-container">
+    <table class="table">
+                <thead >
+                    <tr>
+                        <th class="orderable">
+                                <a href="?sort=ders_no">Ders No</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=toplanma_saati">Toplanma</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=ders_baslangic">Öğretmen Zili</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=ogretmen_saat">Ders Zili</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=ders_bitis">Çıkış</a>
+                        </th>
+                        <th class="orderable">
+                                <a href="?sort=active">Aktif Pasif</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody >
+                     {% for  def in gundeyat %}
+                    <tr class="odd">
+                            <td >{{def.ders_no}}</td>
+                            <td >{{def.toplanma_saati}}</td>
+                            <td >{{def.ders_baslangic}}</td>
+                            <td >{{def.ogretmen_saat}}</td>
+                            <td >{{def.ders_bitis}}</td>
+                            <td ><span class="{{def.active}}">{% if def.active %}✔{% else %}X{% endif %}</span></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{ message}}</div>
+    {% endfor %}
+{% endif %}
+{% endblock %}

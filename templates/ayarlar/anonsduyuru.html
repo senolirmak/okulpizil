@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Duyru
+{% endblock %}
+
+{% block top %}
+{% endblock%}
+
+{% block content %}
+<div class="row justify-content-center vertical-center">
+    <form method="POST" class="post-form">{% csrf_token %}
+                <label for="id_metin"></label>
+                <textarea class="form-control" name="metin" required id="id_metin" value="{{metin}}" cols="40" rows="5" ></textarea><br>
+                <div class="row justify-content-center vertical-center">
+                   <button class="btn btn-primary btn-sm" type="submit" >Duyuru Yap</button>
+                </div>
+            </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Günün Zil Ayarları
+{% endblock %}
+
+{% block top %}
+{% if request.resolver_match.url_name == 'aksam_new' %}
+   <h4>Kayıtlı Akşam Okul Zil Girişi</h4>
+{% endif %}
+{% if request.resolver_match.url_name == 'okul_new' %}
+    <h4>Kayıtlı Okul Zil Girişi</h4>
+{% endif %}
+{% endblock%}
+
+{% block content %}
+
+<form method="POST" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+    <button class="btn btn-primary btn-sm" type="submit" >Kaydet</button>
+</form>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+

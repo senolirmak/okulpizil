@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Ayarlar
+{% endblock %}
+
+{% block top %}
+<nav class="mainmen">
+  <ul>
+    <li>Örğün Eğitim Zil Ayarları <!-- Top list level item header -->
+      <ul> <!-- Sub-menu nested list -->
+        <li><a href="{% url 'zillistview' %}">Zil Detayları</a></li> <!-- Second level menu item with link -->
+        <li><a href="{% url 'okul_new' %}">Yeni Zil Girişi</a></li>
+      </ul> <!-- End the sub-list -->
+    </li> <!-- End the first top level item -->
+    <li>Akşam Okulu Zil Ayarları <!-- ..and repeat -->
+      <ul>
+        <li><a href="{% url 'zillistviewaksam' %}">Zil Detayları</a></li>
+        <li><a href="{% url 'aksam_new' %}">Yeni Zil Girişi</a></li>
+      </ul>
+    </li>
+  <!-- and more of the same...-->
+  </ul>
+</nav>
+{% endblock%}
+
+{% block content %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

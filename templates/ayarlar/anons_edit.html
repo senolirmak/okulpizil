@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Duyuru
+{% endblock %}
+
+{% block top %}
+{% endblock%}
+
+{% block content %}
+
+<body>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary btn-sm" type="submit" >Duyuru Yap</button>
+</form>
+</body>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

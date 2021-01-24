@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Zil Özelleştirme
+{% endblock %}
+
+
+{% block top %}
+{% if request.resolver_match.url_name == 'ozilaksamdata' %}
+   <h4>Kayıtlı Akşam Okulu Zil Detayları</h4>
+{% endif %}
+{% if request.resolver_match.url_name == 'ozildata' %}
+    <h4>Kayıtlı Okul Zil Detayları</h4>
+{% endif %}
+{% endblock%}
+
+
+{% block content %}
+{% load render_table from django_tables2 %}
+{% render_table table %}
+{% endblock %}
+
+{% block footer %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{ message}}</div>
+    {% endfor %}
+{% endif %}
+{% endblock %}

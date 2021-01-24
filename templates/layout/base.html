@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>{% load static %}
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title >
+
+        {% block title %}
+            Base Title
+        {% endblock %}
+
+    </title>
+    <link href ="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href ="{% static 'css/jumbotron.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+{% include 'layout/header.html' %}
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+  <div class="container">
+        {% block top %}
+        Base Top Content
+        {% endblock %}
+  </div>
+ </div>
+
+
+  <div class="container">
+      {% block content %}
+        Base Content
+      {% endblock %}
+  </div>
+
+</main>
+
+
+{% include 'layout/footer.html' %}
+<footer class="container">
+{% block footer %}
+
+{% endblock %}
+   <p>&copy; 497_29 Raspberry and Python 2020</p>
+</footer>
+
+
+<script src="{% static 'js/jquery-slim.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>
+
+
