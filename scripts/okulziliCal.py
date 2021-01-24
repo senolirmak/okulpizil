@@ -349,10 +349,11 @@ print("Okul veri guncel: {}".format(okul.kontrol.get('guncel', False)))"""
 nm = OkulZiliCal(DersZamanlama, DuyuruData, 'normal')
 nm.aktif_set(True)
 nm.guncel_set(True)
-nm.vericek()
+xmelodi = {'okultip': 'normal', 'toplan': 'toplanma.mp3', 'ilk': 'ilk.mp3', 'ders': 'ders.mp3', 'cik': 'cik.mp3',
+           'metin': None}
+
+nm.zil_melodi(**xmelodi)
 print(nm.aktif_get())
-nm.guncel_set(False)
-nm.bayrak_set(True)
-nm.metin_set('Şenol Irmak')
+
 nm.GunlukZilleriKur()
 
