@@ -1,6 +1,7 @@
 # Okul Zil ve Duyuru Sistemi
 ### 497_29 Raspberry and Python Grubu
 Proje Rasberry Pi 3 config:
+nginx,uw
 
 Django Dökümanlardan:
 
