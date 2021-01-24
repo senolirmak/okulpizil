@@ -1,10 +1,6 @@
 # Okul Zil ve Duyuru Sistemi
 ### 497_29 Raspberry and Python Grubu
-
-Ziller django-background-tasks modulü kullanılarak çalıştırılmaktadır.
-Konsolda
- 
-$ python manage.py process_tasks 
+Proje Rasberry Pi 3 config:
 
 Django Dökümanlardan:
 
