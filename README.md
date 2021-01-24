@@ -1,10 +1,7 @@
 # Okul Zil ve Duyuru Sistemi
 ### 497_29 Raspberry and Python Grubu
 
-Ziller django-background-tasks modulü kullanılarak çalıştırılmaktadır.
-Konsolda
- 
-$ python manage.py process_tasks 
+Pizil web server config file;
 
 Django Dökümanlardan:
 
